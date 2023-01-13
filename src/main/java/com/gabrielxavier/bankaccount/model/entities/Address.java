@@ -1,12 +1,15 @@
 package com.gabrielxavier.bankaccount.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name= "tb_address")
+@Table(name = "tb_address")
 public class Address implements Serializable {
 
     @Id
@@ -18,6 +21,8 @@ public class Address implements Serializable {
     private String state;
     private String Country;
 
+    @OneToMany(mappedBy = "address")
+    private List<User> clients = new ArrayList<>();
 
     public Address() {
     }

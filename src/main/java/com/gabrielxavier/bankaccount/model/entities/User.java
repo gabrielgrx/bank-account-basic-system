@@ -1,7 +1,6 @@
 package com.gabrielxavier.bankaccount.model.entities;
 
 import jakarta.persistence.*;
-import org.springframework.beans.factory.support.AbstractBeanDefinitionReader;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -18,6 +17,10 @@ public class User implements Serializable {
     private String email;
     private String phone;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Address address;
+
     public User() {
     }
 
@@ -26,6 +29,7 @@ public class User implements Serializable {
         this.cpf = cpf;
         this.email = email;
         this.phone = phone;
+        this.address = address;
     }
 
     public Long getId() {
@@ -62,6 +66,14 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
