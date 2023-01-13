@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 public class UserDTO implements Serializable {
 
+    private Long id;
     private String name;
     private String cpf;
     private String email;
@@ -15,6 +16,7 @@ public class UserDTO implements Serializable {
     }
 
     public UserDTO(User obj) {
+        id = obj.getId();
         name = obj.getName();
         cpf = obj.getCpf();
         email = obj.getEmail();

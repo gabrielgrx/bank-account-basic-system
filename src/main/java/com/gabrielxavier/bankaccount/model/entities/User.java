@@ -1,6 +1,7 @@
 package com.gabrielxavier.bankaccount.model.entities;
 
 import jakarta.persistence.*;
+import org.springframework.beans.factory.support.AbstractBeanDefinitionReader;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -20,7 +21,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String name, String cpf, String email, String phone) {
+    public User(String name, String cpf, String email, String phone, Address address) {
         this.name = name;
         this.cpf = cpf;
         this.email = email;
