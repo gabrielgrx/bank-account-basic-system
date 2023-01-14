@@ -1,26 +1,42 @@
 package com.gabrielxavier.bankaccount.dto;
 
-import com.gabrielxavier.bankaccount.model.entities.User;
+import com.gabrielxavier.bankaccount.model.Account;
+import com.gabrielxavier.bankaccount.model.Address;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class UserDTO implements Serializable {
 
-    private Long id;
+    @NotBlank
     private String name;
+
+    @NotBlank
+    @Size(max = 11)
     private String cpf;
+
+    @NotBlank
     private String email;
+
+    @NotBlank
     private String phone;
+
+    private Address address;
+
+    private Set<Account> accounts = new HashSet<>();
 
     public UserDTO() {
     }
 
-    public UserDTO(User obj) {
-        id = obj.getId();
-        name = obj.getName();
-        cpf = obj.getCpf();
-        email = obj.getEmail();
-        phone = obj.getPhone();
+    public UserDTO(String name, String cpf, String email, String phone, Address address) {
+        this.name = name;
+        this.cpf = cpf;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
     }
 
     public String getName() {
@@ -53,5 +69,17 @@ public class UserDTO implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
     }
 }

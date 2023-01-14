@@ -1,25 +1,38 @@
-package com.gabrielxavier.bankaccount.model.entities;
+package com.gabrielxavier.bankaccount.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
-import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
-@Table(name = "tb_user")
-public class User implements Serializable {
+@Table(name= "tb_user")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false, unique = true)
+    @Size(max = 11)
     private String cpf;
+
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String phone;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "address_id")
     private Address address;
+
+    private Set<Account> accounts = new HashSet<>();
 
     public User() {
     }
@@ -74,6 +87,10 @@ public class User implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
     }
 
     @Override

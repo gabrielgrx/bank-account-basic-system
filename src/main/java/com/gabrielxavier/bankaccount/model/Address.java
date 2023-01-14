@@ -1,4 +1,4 @@
-package com.gabrielxavier.bankaccount.model.entities;
+package com.gabrielxavier.bankaccount.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -15,12 +15,23 @@ public class Address implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String street;
+
+    @Column(nullable = false)
     private Integer number;
+
+    @Column(nullable = false)
     private String city;
+
+    @Column(nullable = false)
     private String state;
+
+    @Column(nullable = false)
     private String Country;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "address")
     private List<User> clients = new ArrayList<>();
 
@@ -32,7 +43,7 @@ public class Address implements Serializable {
         this.number = number;
         this.city = city;
         this.state = state;
-        Country = country;
+        this.Country = country;
     }
 
     public Long getId() {
@@ -77,6 +88,10 @@ public class Address implements Serializable {
 
     public void setCountry(String country) {
         Country = country;
+    }
+
+    public List<User> getClients() {
+        return clients;
     }
 
     @Override

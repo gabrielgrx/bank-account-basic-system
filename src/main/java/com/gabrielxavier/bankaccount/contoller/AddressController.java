@@ -1,8 +1,8 @@
-package com.gabrielxavier.bankaccount.contollers;
+package com.gabrielxavier.bankaccount.contoller;
 
 import com.gabrielxavier.bankaccount.dto.AddressDTO;
-import com.gabrielxavier.bankaccount.model.entities.Address;
-import com.gabrielxavier.bankaccount.services.AddressService;
+import com.gabrielxavier.bankaccount.model.Address;
+import com.gabrielxavier.bankaccount.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +17,9 @@ public class AddressController {
     @Autowired
     private AddressService service;
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<AddressDTO> findById(@PathVariable Long id) {
-        Address obj = service.findById(id);
-        return ResponseEntity.ok().body(new AddressDTO(obj));
-    }
+//    @GetMapping(value = "/{id}")
+//    public ResponseEntity<AddressDTO> findById(@PathVariable Long id) {
+//        Address obj = service.findById(id);
+//        return ResponseEntity.ok().body(new AddressDTO(obj));
+//    }
 }
