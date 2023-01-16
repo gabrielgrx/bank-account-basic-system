@@ -1,7 +1,7 @@
 package com.gabrielxavier.bankaccount.dto;
 
-import com.gabrielxavier.bankaccount.model.Account;
-import com.gabrielxavier.bankaccount.model.Address;
+import com.gabrielxavier.bankaccount.entity.Account;
+import com.gabrielxavier.bankaccount.entity.Address;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 

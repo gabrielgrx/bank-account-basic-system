@@ -1,7 +1,7 @@
 package com.gabrielxavier.bankaccount.contoller;
 
 import com.gabrielxavier.bankaccount.dto.UserDTO;
-import com.gabrielxavier.bankaccount.service.UserService;
+import com.gabrielxavier.bankaccount.service.imp.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,15 +16,15 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService service;
-
-    @GetMapping(value = "/{cpf}")
-    public ResponseEntity<UserDTO> findByCpf(@PathVariable String cpf) {
-        return service.findByCpf(cpf);
-    }
+    private UserServiceImp userServiceImp;
 
     @GetMapping
     public ResponseEntity<List<UserDTO>> findAll() {
-        return service.findAll();
+        return userServiceImp.findAll();
+    }
+
+    @GetMapping(value = "/{cpf}")
+    public ResponseEntity<UserDTO> findByUserCpf(@PathVariable String cpf) {
+        return userServiceImp.findByCpf(cpf);
     }
 }

@@ -1,9 +1,10 @@
 package com.gabrielxavier.bankaccount.config;
 
-import com.gabrielxavier.bankaccount.model.Account;
-import com.gabrielxavier.bankaccount.model.Address;
-import com.gabrielxavier.bankaccount.model.User;
-import com.gabrielxavier.bankaccount.model.enums.AccountType;
+import com.gabrielxavier.bankaccount.entity.Account;
+import com.gabrielxavier.bankaccount.entity.Address;
+import com.gabrielxavier.bankaccount.entity.User;
+import com.gabrielxavier.bankaccount.entity.enums.AccountType;
+import com.gabrielxavier.bankaccount.repository.AccountRepository;
 import com.gabrielxavier.bankaccount.repository.AddressRepository;
 import com.gabrielxavier.bankaccount.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,13 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private AddressRepository addressRepository;
 
+    @Autowired
+    private AccountRepository accountRepository;
+
     @Override
     public void run(String... args) throws Exception {
 
+        accountRepository.deleteAll();
         userRepository.deleteAll();
         addressRepository.deleteAll();
 
@@ -40,7 +45,11 @@ public class TestConfig implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(u1, u2, u3));
 
-//        Account ac1 = new Account(1234, 333, 1, 5, AccountType.PERSONAL, u1);
+        Account ac1 = new Account(1234, 333, 1, AccountType.PERSONAL, 0.0);
+
+        accountRepository.save(ac1);
+
+
 
     }
 }

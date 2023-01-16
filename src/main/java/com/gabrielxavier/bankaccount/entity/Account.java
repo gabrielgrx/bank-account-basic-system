@@ -1,6 +1,6 @@
-package com.gabrielxavier.bankaccount.model;
+package com.gabrielxavier.bankaccount.entity;
 
-import com.gabrielxavier.bankaccount.model.enums.AccountType;
+import com.gabrielxavier.bankaccount.entity.enums.AccountType;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -23,9 +23,6 @@ public class Account implements Serializable {
     @Column(nullable = false)
     private Integer checkDigit;
 
-    @Column(unique = true)
-    private String cpf;
-
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
@@ -33,24 +30,19 @@ public class Account implements Serializable {
     @Column
     private Double balance;
 
-    @Column
-    private Integer withdrawQuantity;
-
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id")
     private User client;
 
     public Account() {
     }
 
-    public Account(Integer agency, Integer number, Integer checkDigit, Integer withdrawQuantity, AccountType accountType, User client) {
+    public Account(Integer agency, Integer number, Integer checkDigit, AccountType accountType, Double balance) {
         this.agency = agency;
         this.number = number;
         this.checkDigit = checkDigit;
-        this.withdrawQuantity = withdrawQuantity;
         this.accountType = accountType;
-        this.client = client;
-        this.cpf = client.getCpf();
-        this.balance = 0.0;
+        this.balance = balance;
     }
 
     public Integer getAgency() {
@@ -75,14 +67,6 @@ public class Account implements Serializable {
 
     public void setCheckDigit(Integer checkDigit) {
         this.checkDigit = checkDigit;
-    }
-
-    public Integer getWithdrawQuantity() {
-        return withdrawQuantity;
-    }
-
-    public void setWithdrawQuantity(Integer withdrawQuantity) {
-        this.withdrawQuantity = withdrawQuantity;
     }
 
     public Double getBalance() {

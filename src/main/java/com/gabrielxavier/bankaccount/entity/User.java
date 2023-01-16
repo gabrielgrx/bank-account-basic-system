@@ -1,15 +1,16 @@
-package com.gabrielxavier.bankaccount.model;
+package com.gabrielxavier.bankaccount.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name= "tb_user")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +33,7 @@ public class User {
     @JoinColumn(name = "address_id")
     private Address address;
 
+    @OneToMany(mappedBy = "client")
     private Set<Account> accounts = new HashSet<>();
 
     public User() {
