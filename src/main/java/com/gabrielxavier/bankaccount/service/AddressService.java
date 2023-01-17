@@ -1,6 +1,6 @@
 package com.gabrielxavier.bankaccount.service;
 
-import com.gabrielxavier.bankaccount.entity.Address;
+import com.gabrielxavier.bankaccount.model.Address;
 import com.gabrielxavier.bankaccount.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

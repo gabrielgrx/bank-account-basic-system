@@ -1,4 +1,4 @@
-package com.gabrielxavier.bankaccount.entity.enums;
+package com.gabrielxavier.bankaccount.model.enums;
 
 public enum AccountType {
     CURRENT,

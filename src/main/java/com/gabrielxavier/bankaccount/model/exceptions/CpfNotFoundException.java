@@ -1,4 +1,4 @@
-package com.gabrielxavier.bankaccount.entity.exceptions;
+package com.gabrielxavier.bankaccount.model.exceptions;
 
 public class CpfNotFoundException extends RuntimeException {
 

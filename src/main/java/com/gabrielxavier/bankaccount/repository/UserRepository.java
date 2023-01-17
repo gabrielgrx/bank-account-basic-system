@@ -1,6 +1,6 @@
 package com.gabrielxavier.bankaccount.repository;
 
-import com.gabrielxavier.bankaccount.entity.User;
+import com.gabrielxavier.bankaccount.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
