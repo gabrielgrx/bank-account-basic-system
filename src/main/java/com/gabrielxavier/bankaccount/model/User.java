@@ -2,6 +2,7 @@ package com.gabrielxavier.bankaccount.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,6 +35,7 @@ public class User implements Serializable {
     private String email;
 
     @Column(nullable = false)
+    @Pattern(regexp = "^\\([1-9]{2}\\) (?:[2-8]|9[1-9])[0-9]{3}\\-[0-9]{4}$")
     private String phone;
 
     @ManyToOne
